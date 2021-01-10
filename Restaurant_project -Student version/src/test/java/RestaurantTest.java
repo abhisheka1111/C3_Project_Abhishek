@@ -21,7 +21,7 @@ class RestaurantTest {
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
         //WRITE UNIT TEST CASE HERE 
         
-        restaurant = Mockito.mock(Restaurant.class);
+        restaurant = Mockito.spy(Restaurant.class);
         if(LocalTime.now().isAfter(restaurant.openingTime)&&LocalTime.now().isBefore(restaurant.closingTime))
         Mockito.when(restaurant.isRestaurantOpen()).thenReturn(true);
         assertTrue(restaurant.isRestaurantOpen());
@@ -30,7 +30,7 @@ class RestaurantTest {
     @Test
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
         //WRITE UNIT TEST CASE HERE
-        restaurant = Mockito.mock(Restaurant.class);
+        restaurant = Mockito.spy(Restaurant.class);
         restaurant =new Restaurant("Amelie's cafe","Chennai",restaurant.openingTime,restaurant.closingTime);
         if(LocalTime.now().isAfter(restaurant.closingTime))
         Mockito.when(restaurant.isRestaurantOpen()).thenReturn(false);
